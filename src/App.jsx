@@ -1,14 +1,15 @@
-import Button from "./components/Button/Button.jsx";
+import cources from "./data.js";
+import Card from "./components/Card/Card.jsx";
 
 function App() {
   return (
-    <>
     <div>
-        Hello World!
-        <Button />
-        <Button />
+        <div>
+            {cources.map ((course) => {
+                return (<Card key={course.id} data={course}/>)
+            }) }
+        </div>
     </div>
-    </>
   )
 }
 

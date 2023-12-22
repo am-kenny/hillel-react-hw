@@ -1,6 +1,9 @@
-const Button = () => {
+const Button = (props) => {
+
+    const { text = "Default text" } = props;
+
     return (
-        <button>Button component</button>
+        <button>{text}</button>
     )
 }
 
