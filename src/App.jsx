@@ -1,14 +1,11 @@
-import cources from "./data.js";
-import Card from "./components/Card/Card.jsx";
+import Counter from "./components/Counter/Counter.jsx";
+
 
 function App() {
-  return (
+
+    return (
     <div>
-        <div>
-            {cources.map ((course) => {
-                return (<Card key={course.id} data={course}/>)
-            }) }
-        </div>
+        <Counter />
     </div>
   )
 }
