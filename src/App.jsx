@@ -1,11 +1,11 @@
-import Counter from "./components/Counter/Counter.jsx";
+import Blog from "./components/Blog/Blog.jsx";
 
 
 function App() {
 
     return (
     <div>
-        <Counter />
+        <Blog />
     </div>
   )
 }
