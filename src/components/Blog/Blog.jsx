@@ -10,7 +10,6 @@ const Blog = () => {
         const getPosts = async () => {
             try {
                 const res = await fetch('https://jsonplaceholder.org/posts')
-
                 if (!res.ok) {
                     throw new Error("Failed to fetch")
                 }
