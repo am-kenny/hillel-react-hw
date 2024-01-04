@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import BlogPost from "./BlogPost.jsx";
+import BlogPost from "../../components/Blog/BlogPost.jsx";
 import './Blog.css'
 
 const Blog = () => {
