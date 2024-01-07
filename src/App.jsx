@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound.jsx";
 import UserDetails from "./pages/Users/UserDetails.jsx";
 import './App.css'
 import Blog from "./pages/Blog/Blog.jsx";
+import CurrentUser from "./pages/Users/CurrentUser.jsx";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                     <NavLink className={"header__link"} to="/todos">Todos</NavLink>
                     <NavLink className={"header__link"} to="/blog">Blog</NavLink>
                     <NavLink className={"header__link"} to="/users">Users</NavLink>
+                    <NavLink className={"header__link"} to="/current_user">Profile</NavLink>
                 </nav>
             </header>
 
@@ -27,6 +29,7 @@ function App() {
                 <Route path='/users' element={<Users/>}/>
                 <Route path='/users/:userId' element={<UserDetails/>}/>
                 <Route path='/blog' element={<Blog/>}/>
+                <Route path='/current_user' element={<CurrentUser/>}/>
 
                 <Route path='*' element={<PageNotFound/>}/>
             </Routes>

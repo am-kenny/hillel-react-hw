@@ -1,6 +1,20 @@
 import PropTypes from "prop-types";
+import {useContext} from "react";
+import {UserContext} from "../../context/UserInfoContext.jsx";
+import Button from "../Button/Button.jsx";
 
 const BlogPost = ({ post }) => {
+    const {permissions} = useContext(UserContext)
+
+    let deleteButton
+    if (!permissions.includes("admin")) {
+        deleteButton = null;
+    } else {
+        deleteButton = <Button onClick={() => {
+            console.log(`Emulating delete request for post ${post.id}`)
+        }} text={"Delete"}/>
+    }
+
     return (
         <div key={post.id} className="blog-post">
             <div className="post-title-container">
@@ -11,6 +25,7 @@ const BlogPost = ({ post }) => {
                 <p className="post-published-at">{post.publishedAt}</p>
                 <a className="post-read-link" href="">Read more</a>
             </div>
+            {deleteButton}
         </div>
     );
 };
