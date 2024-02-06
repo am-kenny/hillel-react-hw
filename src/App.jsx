@@ -7,6 +7,7 @@ import UserDetails from "./pages/Users/UserDetails.jsx";
 import './App.css'
 import Blog from "./pages/Blog/Blog.jsx";
 import CurrentUser from "./pages/Users/CurrentUser.jsx";
+import Auth from "./pages/Auth.jsx";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
                     <NavLink className={"header__link"} to="/blog">Blog</NavLink>
                     <NavLink className={"header__link"} to="/users">Users</NavLink>
                     <NavLink className={"header__link"} to="/current_user">Profile</NavLink>
+                    <NavLink className={"header__link"} to="/auth">Auth</NavLink>
                 </nav>
             </header>
 
@@ -30,6 +32,7 @@ function App() {
                 <Route path='/users/:userId' element={<UserDetails/>}/>
                 <Route path='/blog' element={<Blog/>}/>
                 <Route path='/current_user' element={<CurrentUser/>}/>
+                <Route path='/auth' element={<Auth/>}/>
 
                 <Route path='*' element={<PageNotFound/>}/>
             </Routes>
