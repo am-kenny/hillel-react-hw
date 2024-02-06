@@ -8,6 +8,8 @@ import './App.css'
 import Blog from "./pages/Blog/Blog.jsx";
 import CurrentUser from "./pages/Users/CurrentUser.jsx";
 import Auth from "./pages/Auth.jsx";
+import Products from "./pages/Products.jsx";
+import Cart from "./pages/Cart.jsx";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
                     <NavLink className={"header__link"} to="/users">Users</NavLink>
                     <NavLink className={"header__link"} to="/current_user">Profile</NavLink>
                     <NavLink className={"header__link"} to="/auth">Auth</NavLink>
+                    <NavLink className={"header__link"} to="/products">Products</NavLink>
+                    <NavLink className={"header__link"} to="/cart">Cart</NavLink>
                 </nav>
             </header>
 
@@ -33,6 +37,8 @@ function App() {
                 <Route path='/blog' element={<Blog/>}/>
                 <Route path='/current_user' element={<CurrentUser/>}/>
                 <Route path='/auth' element={<Auth/>}/>
+                <Route path='/products' element={<Products/>}/>
+                <Route path='/cart' element={<Cart/>}/>
 
                 <Route path='*' element={<PageNotFound/>}/>
             </Routes>
