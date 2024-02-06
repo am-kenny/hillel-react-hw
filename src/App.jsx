@@ -10,6 +10,7 @@ import CurrentUser from "./pages/Users/CurrentUser.jsx";
 import Auth from "./pages/Auth.jsx";
 import Products from "./pages/Products.jsx";
 import Cart from "./pages/Cart.jsx";
+import Counter from "./pages/Counter/Counter.jsx";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
                     <NavLink className={"header__link"} to="/auth">Auth</NavLink>
                     <NavLink className={"header__link"} to="/products">Products</NavLink>
                     <NavLink className={"header__link"} to="/cart">Cart</NavLink>
+                    <NavLink className={"header__link"} to="/counter">Counter</NavLink>
                 </nav>
             </header>
 
@@ -39,6 +41,7 @@ function App() {
                 <Route path='/auth' element={<Auth/>}/>
                 <Route path='/products' element={<Products/>}/>
                 <Route path='/cart' element={<Cart/>}/>
+                <Route path='/counter' element={<Counter/>}/>
 
                 <Route path='*' element={<PageNotFound/>}/>
             </Routes>
