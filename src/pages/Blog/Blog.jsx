@@ -1,29 +1,19 @@
 import {useEffect, useState} from "react";
 import BlogPost from "../../components/Blog/BlogPost.jsx";
 import './Blog.css'
+import useFetch from "../../hooks/useFetch.jsx";
 
 const Blog = () => {
+    const {data: posts, loading, error} = useFetch('https://jsonplaceholder.org/posts');
 
-    const [posts, setPosts] = useState([]);
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
-    useEffect(() => {
-        const getPosts = async () => {
-            try {
-                const res = await fetch('https://jsonplaceholder.org/posts')
-                if (!res.ok) {
-                    throw new Error("Failed to fetch")
-                }
+    if (error) {
+        return <div>Something went wrong: {error.message}</div>
+    }
 
-                const data = await res.json()
-                setPosts(data)
-            } catch (e) {
-                console.error(e.message)
-            }
-        }
-
-        getPosts()
-
-    }, []);
 
     return (
         <div className="container">

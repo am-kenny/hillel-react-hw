@@ -11,6 +11,7 @@ import Auth from "./pages/Auth.jsx";
 import Products from "./pages/Products.jsx";
 import Cart from "./pages/Cart.jsx";
 import Counter from "./pages/Counter/Counter.jsx";
+import './assets/reset.css'
 
 function App() {
 

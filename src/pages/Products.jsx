@@ -1,33 +1,23 @@
-import {useEffect, useState} from 'react';
 import {PIZZA_API} from "../constants.js";
 import ProductCard from "../components/MenuItem/ProductCard.jsx";
+import useFetch from "../hooks/useFetch.jsx";
 
 const Products = () => {
 
-    const [products, setProducts] = useState([]);
+    const {data: products, loading, error} = useFetch(`${PIZZA_API}/menu`);
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const res = await fetch(`${PIZZA_API}/menu`)
-                if (!res.ok) {
-                    throw new Error("Failed to fetch")
-                }
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
-                const response = await res.json()
-                setProducts(response.data)
-            } catch (e) {
-                console.error(e.message)
-            }
-        }
-        getProducts();
-    }, []);
-
+    if (error) {
+        return <div>Something went wrong: {error.message}</div>
+    }
 
     return (
         <div className="container">
             <div>
-                {products.map((product) => (
+                {!!products && products.data.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>

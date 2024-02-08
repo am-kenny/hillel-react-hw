@@ -1,34 +1,24 @@
-import {useEffect, useState} from "react";
 import UserCard from "../../components/Users/UserCard.jsx";
 import './Users.css'
+import useFetch from "../../hooks/useFetch.jsx";
 
 const Users = () => {
 
-    const [users, setUsers] = useState([])
+    const {data: users, loading, error} = useFetch('https://jsonplaceholder.typicode.com/users');
 
-    useEffect(() => {
-        const getUsers = async () => {
-            try {
-                const res = await fetch('https://jsonplaceholder.typicode.com/users')
-                if (!res.ok) {
-                    throw new Error("Failed to fetch")
-                }
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
-                const data = await res.json()
-                setUsers(data)
-            } catch (e) {
-                console.error(e.message)
-            }
-        }
-
-        getUsers()
-    }, []);
+    if (error) {
+        return <div>Something went wrong: {error.message}</div>
+    }
 
     return (
         <div className="users-container">
             <h1 className="users-heading">Users</h1>
             <div className="user-cards-container">
-                {users.map((user) => (
+                {!!users && users.map((user) => (
                     <UserCard key={user.id} user={user} />
                 ))}
             </div>

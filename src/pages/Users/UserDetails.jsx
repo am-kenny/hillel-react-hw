@@ -1,30 +1,19 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import useFetch from "../../hooks/useFetch.jsx";
 
 const UserDetails = () => {
     const params = useParams();
 
-    const [user, setUser] = useState(null)
-    const [error, setError] = useState("")
 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`)
-                if (!res.ok) {
-                    throw new Error("Failed to fetch")
-                }
+    const {data: user, loading, error} = useFetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`);
 
-                const data = await res.json()
-                setUser(data)
-            } catch (e) {
-                console.error(e.message)
-                setError(e.message)
-            }
-        }
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
-        getUser()
-    }, [params.userId]);
+    if (error) {
+        return <div>Something went wrong: {error.message}</div>
+    }
 
 
     return (
